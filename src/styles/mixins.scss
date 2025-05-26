@@ -1,0 +1,27 @@
+$primary-color: #242424;
+$secondary-color: #fcfcfc;
+$branding-color: #e86565;
+$font-size-base: 16px;
+$spacing: 16px;
+
+@mixin box-shadow($color) {
+    box-shadow: 0 2px 4px $color;
+}
+
+@mixin flex($direction:column, $gap:$spacing) {
+    display: flex;
+    flex-direction: $direction;
+    gap: $gap;    
+}
+
+@mixin font1( $weight: 400) { 
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: $weight;
+    font-style: normal;      
+}
+
+@mixin border( $radius:15px, $px:2px, $color:$branding-color){   
+    border-radius:$radius;
+    border:$px solid $color;
+}

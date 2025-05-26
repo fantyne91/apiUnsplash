@@ -1,0 +1,70 @@
+
+// %border{
+//     border-radius:10px;
+//     border:2px
+// }
+
+.playpen-sans-deva-500 {
+    font-family: "Playpen Sans Deva", cursive;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+:root {
+
+    line-height: 1.5;    
+    color-scheme: light dark;
+   
+   font-size: $font-size-base;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  a {    
+    text-decoration: inherit;
+
+    &:hover {
+      color: #747bff;
+    }
+  }
+
+  html, body,  #app  {
+    margin: 0;
+    background-color: $secondary-color;
+    min-width: 320px;
+    min-height: 100vh;
+    font-family: "Playpen Sans Deva", cursive;
+    font-weight: 400;
+    @include flex();
+    width:100%;  
+    color: $primary-color;
+   }
+   section{
+    padding: $spacing *4 $spacing *5;
+   }
+  h1, h2, h3, h4, h5, h6 , p {  
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+  }
+    
+ 
+  
+  @media (prefers-color-scheme: light) {
+    :root {
+      color: #213547;
+      background-color: #ffffff;
+    }
+    a:hover {
+      color: #747bff;
+    }
+    button {
+      background-color: #f9f9f9;
+    }
+  }
+  
