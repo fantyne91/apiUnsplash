@@ -23,29 +23,69 @@ import { ref } from "vue";
 
 //.style.backgroundImage = `url(${Url})`; style.filters = 'blur(5px)';
 </script>
+
 <template>
-    <div class="card" @mouseenter="hover = true" @mouseleave="hover = false"
-        :class="{ hover: hover }"
-        :key="Name"
-    :style="{
-        backgroundImage: `url(${Url})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        width: '300px',
-        height: '350px',
-        borderRadius: '8px',
-
-    }">
-        <div v-if="hover" class="content">
-            <h2>{{ Name }}</h2>
-            <img :src="User.src" :alt="User.alt" class="user-image" />
-        </div>
-
+    <div class="card" @mouseenter="hover = true" @mouseleave="hover = false" :style="{ backgroundImage: `url(${Url})`}">
+        <transition name="fade-slide">
+            <div v-if="hover" class="content">
+                <h2>{{ Name }}</h2>
+                <img :src="User.src" :alt="User.alt" class="user-image" />
+            </div>
+        </transition>
     </div>
 </template>
-<style lang="scss" scoped>
 
-    div{
-        height: 100vh;
-    }
+<style lang="scss" scoped>
+        .card {
+            z-index: 0;
+            background-size: cover;
+            background-position: center;
+            width: 300px;
+            height: 350px;
+            @include border(25px, 0px);
+            @include box-shadow();
+        }
+        
+        .card:hover::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: white;
+            opacity: 0.8;
+            border-radius: 25px;
+            transition: all 0.5s ease-in-out;
+        }
+    
+        .content {
+            z-index: 3;
+            @include flex();
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            transition: all 0.5s ease-in-out;
+    
+            img {
+                max-width: 100px;
+                max-height: 100px;
+                @include border(100px, 4px, $branding2-color);
+            }
+        }
+        /**Transition reaction DOM */
+        .fade-slide-enter-active,
+        .fade-slide-leave-active {
+            transition: opacity 0.4s ease;
+        }
+    
+        .fade-slide-enter-to,
+        .fade-slide-leave-from {
+            opacity: 1;
+        
+        }
+                .fade-slide-leave-to, .fade-slide-enter-from {
+                    opacity: 0;
+          
+                }
 </style>

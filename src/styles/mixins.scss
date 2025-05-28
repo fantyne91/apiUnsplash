@@ -1,10 +1,12 @@
 $primary-color: #242424;
 $secondary-color: #fcfcfc;
 $branding-color: #e86565;
+$branding2-color: #e8658c;
+$grey1-color: #929292;
 $font-size-base: 16px;
 $spacing: 16px;
 
-@mixin box-shadow($color) {
+@mixin box-shadow($color:$grey1-color) {
     box-shadow: 0 2px 4px $color;
 }
 
@@ -21,7 +23,7 @@ $spacing: 16px;
     font-style: normal;      
 }
 
-@mixin border( $radius:15px, $px:2px, $color:$branding-color){   
+@mixin border( $radius:15px, $px:2px, $color:transparent) {   
     border-radius:$radius;
-    border:$px solid $color;
+     border:$px solid $color;
 }

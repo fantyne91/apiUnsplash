@@ -70,7 +70,7 @@
         
         .search {
                 @include flex(row, 56px);
-                @include border(25px, 3px);
+                @include border(25px, 3px,$branding-color);
                 padding: 4px ;
                 align-items: center;
                 width:300px;
@@ -91,7 +91,7 @@
         height: 22px;
         padding: 4px;
         cursor: pointer;
-        @include border(25px, 3px);
+        @include border(25px, 3px, $branding-color);
         background-color: $secondary-color;
     }
 </style>

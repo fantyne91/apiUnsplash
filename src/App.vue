@@ -1,6 +1,8 @@
 <script setup>
 import Header from './components/Header.vue'
 import Landing from './components/Landing.vue'
+import { createApi } from 'unsplash-js';
+
 
 </script>
 
@@ -8,6 +10,7 @@ import Landing from './components/Landing.vue'
 
 
     <Header></Header>
+    <!--routerview-->
     <Landing></Landing>
     <p>Hola</p>
 
