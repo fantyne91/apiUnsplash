@@ -25,7 +25,8 @@ import { ref } from "vue";
 </script>
 
 <template>
-    <div class="card" @mouseenter="hover = true" @mouseleave="hover = false" :style="{ backgroundImage: `url(${Url})`}">
+    <div class="card" @mouseenter="hover = true" @mouseleave="hover = false" >
+        <img :src="Url" :alt="Name" class="background" />
         <transition name="fade-slide">
             <div v-if="hover" class="content">
                 <h2>{{ Name }}</h2>
@@ -36,23 +37,29 @@ import { ref } from "vue";
 </template>
 
 <style lang="scss" scoped>
-        .card {
-            z-index: 0;
-            background-size: cover;
-            background-position: center;
-            width: 300px;
-            height: 350px;
-            @include border(25px, 0px);
-            @include box-shadow();
-        }
-        
+                          .card {
+                              width: 100%;
+                              margin-bottom: 1rem;
+                              break-inside: avoid;
+                              border-radius: 25px;
+                              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                              overflow: hidden;
+                              position: relative;
+                          }
+            
+                          .card>img {
+                              width: 100%;
+                              height: auto;
+                              display: block;
+                          }
         .card:hover::after {
             content: "";
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
+            top:0;
             background-color: white;
             opacity: 0.8;
             border-radius: 25px;
@@ -66,7 +73,10 @@ import { ref } from "vue";
             align-items: center;
             height: 100%;
             transition: all 0.5s ease-in-out;
-    
+            position:absolute;
+            top: 0;
+            left:50%;
+            transform: translateX(-50%);
             img {
                 max-width: 100px;
                 max-height: 100px;

@@ -67,31 +67,34 @@
         justify-content: space-between;
         align-items: center;
         //@include box-shadow(#db6464); Uso de un mixin
-        
-        .search {
-                @include flex(row, 56px);
-                @include border(25px, 3px,$branding-color);
-                padding: 4px ;
-                align-items: center;
-                width:300px;
-                justify-content: space-between;
+        svg {
+                width: 22px;
+                height: 22px;
+                padding: 4px;
+                cursor: pointer;
+                @include border(25px, 3px, $branding-color);
                 background-color: $secondary-color;
-                a{
-                    padding-left: $spacing;
-                }
-                svg {
-                        width: 28px;
-                        height: 28px;
-                    }
             }
        
+       
     }
-    nav>svg{
-        width: 22px;
-        height: 22px;
-        padding: 4px;
-        cursor: pointer;
-        @include border(25px, 3px, $branding-color);
-        background-color: $secondary-color;
-    }
+   
+        .search {
+            @include flex(row, 56px);
+            @include border(25px, 3px, $branding-color);
+            padding: 4px;
+            align-items: center;
+            width: 300px;
+            justify-content: space-between;
+            background-color: $secondary-color;
+    
+            a {
+                padding-left: $spacing;
+            }
+    
+            svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
 </style>
