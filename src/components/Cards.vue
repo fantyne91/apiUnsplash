@@ -29,7 +29,7 @@ import { ref } from "vue";
         <img :src="Url" :alt="Name" class="background" />
         <transition name="fade-slide">
             <div v-if="hover" class="content">
-                <h2>{{ Name }}</h2>
+                <h3>{{ Name }}</h3>
                 <img :src="User.src" :alt="User.alt" class="user-image" />
             </div>
         </transition>
@@ -42,15 +42,18 @@ import { ref } from "vue";
                               margin-bottom: 1rem;
                               break-inside: avoid;
                               border-radius: 25px;
-                              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                              
                               overflow: hidden;
                               position: relative;
+                              @include box-shadow;
                           }
             
                           .card>img {
                               width: 100%;
-                              height: auto;
+                              height: 100%;
+                            object-position: center center;
                               display: block;
+                              object-fit: cover;
                           }
         .card:hover::after {
             content: "";
@@ -77,9 +80,10 @@ import { ref } from "vue";
             top: 0;
             left:50%;
             transform: translateX(-50%);
+            text-align: center;
             img {
-                max-width: 100px;
-                max-height: 100px;
+                width: 100px;
+               height: 100px;
                 @include border(100px, 4px, $branding2-color);
             }
         }

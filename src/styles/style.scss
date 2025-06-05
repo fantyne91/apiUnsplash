@@ -40,6 +40,7 @@
     @include flex();
     width:100%;  
     color: $primary-color;
+    
    }
    section{
     padding: $spacing *4 $spacing *5;
@@ -49,11 +50,16 @@
   }
 
   h1 {
-    font-size: 3.2em;
+    font-size: 4rem;
     line-height: 1.1;
   }
     
- 
+  h2 {
+    font-size: 3rem;
+    line-height: 1.5;
+    text-align:center;
+    padding: 0 6rem;
+  } 
   
   @media (prefers-color-scheme: light) {
     :root {
