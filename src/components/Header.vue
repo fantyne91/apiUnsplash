@@ -2,7 +2,7 @@
 </script>
 <template>
     <nav class="header">
-        <p>FindNow</p>
+        <p class="logo">FindNow</p>
         <div class="search">
             <a> Buscar</a>
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#000000">
@@ -67,7 +67,10 @@
         justify-content: space-between;
         align-items: center;
         //@include box-shadow(#db6464); Uso de un mixin
-             
+        .logo{
+            font-weight: 700;
+            font-size: 1.5rem;
+        }     
     }
     nav >svg{
                 width: 22px;

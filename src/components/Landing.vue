@@ -6,11 +6,8 @@ const images = ref([]);
 
 onMounted(async () => {
     
-    const result = await unsplash.photos.getRandom( {
-         
-             count: 16,         
-           
-         
+    const result = await unsplash.photos.getRandom( {         
+             count: 20 
      });
     if (result.type === 'success') {
         // Filtro imágenes que tienen `.urls` definidas
