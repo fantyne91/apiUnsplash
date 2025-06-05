@@ -1,3 +1,3 @@
 # Vue 3 + Vite
 
-Unsplash api project - Vue - SCSS
+Unsplash API project - Vue - SCSS
