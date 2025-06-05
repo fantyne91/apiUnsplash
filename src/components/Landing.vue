@@ -1,23 +1,15 @@
 <script setup>
 import Cards from '@/components/Cards.vue'
-import unsplash from "@/api/unsplash.js";
+import getRandomImg from '../composables/randomImg';
+import { useSearch } from "@/composables/searchImg.js"
 import { ref, onMounted } from 'vue';
-const images = ref([]);
 
-onMounted(async () => {
-    
-    const result = await unsplash.photos.getRandom( {         
-             count: 20 
-     });
-    if (result.type === 'success') {
-        // Filtro imágenes que tienen `.urls` definidas
-        images.value = result.response
-        console.log('Imágenes obtenidas:', images.value);
-    } else {
-        console.error('Error al obtener imágenes:', result.errors);
-    }
-})
+const images = ref([])
+const {resultado, busqueda} = useSearch()
 
+onMounted(async () => {    
+    images.value = await getRandomImg()
+}) 
 </script>
 
 <template>
@@ -38,12 +30,11 @@ onMounted(async () => {
     <section>
         <h2>Tu plataforma para encontrar lo que necesitas <span>al instante.</span></h2>
         <div class="img-api ">
-            <Cards v-for="img in images" :key="img.id" :Url="img.urls.small" :Name="img.user.name"
+            <Cards v-for="img in (busqueda && busqueda.length > 0 ? resultado : images)" :key="img.id" :Url="img.urls.small" :Name="img.user.name"
                 :User="{ src: img.user.profile_image.large }">
                 <!-- <img Url="img.urls.small" :alt="img.alt_description" /> -->
             </Cards>
         </div>
-
     </section>
 
 </template>
