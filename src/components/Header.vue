@@ -72,17 +72,7 @@
             font-size: 1.5rem;
         }     
     }
-    nav >svg{
-                width: 22px;
-                height: 22px;
-                padding: 4px;
-                cursor: pointer;
-                @include border(25px, 3px, $branding-color);
-                background-color: $secondary-color;            
-    }
-    nav > a {
-        font-weight: 500;
-    }
+   
     .search {
             @include flex(row, 56px);
             @include border(25px, 3px, $branding-color);
@@ -101,4 +91,22 @@
                 height: 28px;
             }
     }
+        nav>svg {
+            width: 22px;
+            height: 22px;
+            padding: 4px;
+            cursor: pointer;
+            @include border(25px, 3px, $branding-color);
+            background-color: $secondary-color;
+        }
+    
+        nav > a {
+            font-weight: 500;
+        }
+        nav > a:hover{
+           
+                    cursor: pointer;
+                    color: $branding-color;
+              
+        }
 </style>
