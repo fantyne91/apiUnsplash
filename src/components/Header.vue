@@ -1,19 +1,26 @@
 <script setup>
- import {useSearch} from "@/composables/searchImg.js"
+import { useSearch } from "@/composables/searchImg.js"
+ import {ref} from "vue"
 
 const { buscarImg } = useSearch()
+const inputValue= ref("")
 
-const enter = (e) => {
-    buscarImg(e.target.value)
+// const enter = (e) => {
+//     buscarImg(e.target.value)
+// }
+const ejecutaSearch = async () => {
+    if (!inputValue.value.trim()) return
+    await buscarImg(inputValue.value)
+    inputValue.value = ""
 }
 
 </script>
 <template>
     <nav class="header">
-        <p class="logo">FindNow</p>
-        <form class="search">
-            <input type="text" name="search" placeholder="Buscar" @keydown.enter="enter"/>
-            <button type="submit">
+        <a href="/" class="logo">FindNow</a>
+        <form class="search" @submit.prevent=ejecutaSearch>
+            <input type="text" v-model="inputValue" placeholder="Buscar" />
+            <button @click="enter" type="submit">
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#000000">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -47,8 +54,8 @@ const enter = (e) => {
                     </g>
                 </svg>
             </button>
-        </form> 
-        
+        </form>
+
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>

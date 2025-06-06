@@ -5,7 +5,8 @@ import { useSearch } from "@/composables/searchImg.js"
 import { ref, onMounted } from 'vue';
 
 const images = ref([])
-const {resultado, busqueda} = useSearch()
+
+const {resultado, busqueda, suger} = useSearch()
 
 onMounted(async () => {    
     images.value = await getRandomImg()
@@ -13,7 +14,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <section class="landing">
+    <section v-if="!busqueda" class="landing">
         <h1>Explora</h1>
 
         <Cards class="nubes" Name="María" Url="/img/clouds.jpg" :User="{ src: '/img/maria.png', alt: 'Foto de María' }">
@@ -26,12 +27,12 @@ onMounted(async () => {
         </Cards>
 
     </section>
-
-    <section>
+    <p v-if ="suger.lenght > 1"> {{ suger }}</p>
+    <section>     
         <h2>Tu plataforma para encontrar lo que necesitas <span>al instante.</span></h2>
         <div class="img-api ">
-            <Cards v-for="img in (busqueda && busqueda.length > 0 ? resultado : images)" :key="img.id" :Url="img.urls.small" :Name="img.user.name"
-                :User="{ src: img.user.profile_image.large }">
+            <Cards v-for="img in (busqueda && busqueda.length > 0 ? resultado : images)" :key="img.id"
+                :Url="img.urls.small" :Name="img.user.name" :User="{ src: img.user.profile_image.large }">
                 <!-- <img Url="img.urls.small" :alt="img.alt_description" /> -->
             </Cards>
         </div>
