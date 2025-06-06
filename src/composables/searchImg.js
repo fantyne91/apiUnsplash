@@ -26,7 +26,7 @@ const resultado = ref([])
           perPage: 10,
         });
          resultado.value = respuestaAlt.response.results;
-        suger.value = `No se encontraron resultados para ${text}`
+        suger.value = `No se encontraron resultados para ${text}. Prueba con "Paisaje"`
      }     
    
 };

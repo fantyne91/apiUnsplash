@@ -55,8 +55,8 @@ const ejecutaSearch = async () => {
                 </svg>
             </button>
         </form>
-
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
+        <div></div>
+        <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
             <g id="SVGRepo_iconCarrier">
@@ -65,60 +65,84 @@ const ejecutaSearch = async () => {
                     d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634"
                     stroke="#242424" stroke-width="1.5" stroke-linecap="round"></path>
             </g>
-        </svg>
+        </svg> -->
     </nav>
 </template>
 <style scoped lang="scss">
-
 // import mixin
-    nav{
-        z-index: 1000;
-        padding: 8px $spacing*3;
-        color:black;     
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;        
-        .logo{
-            font-weight: 700;
-            font-size: 1.5rem;
-        }     
+nav {
+    z-index: 1000;
+    padding: 8px clamp($spacing/2, 1vw, $spacing*3);
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: $spacing;
+
+    .logo {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: $branding-color;
     }
-   
-        .search {
-            @include flex(row, 56px);
-            @include border(25px, 3px, $branding-color);
-            padding: 4px;
-            align-items: center;
-            width: 300px;
-            justify-content: space-between;
-            background-color: $secondary-color;
-    
-            a {
-                padding-left: $spacing;
-            }
-    
-            svg {
-                width: 28px;
-                height: 28px;
-            }
-        }
-        nav>svg {
-            width: 22px;
-            height: 22px;
-            padding: 4px;
-            cursor: pointer;
-            @include border(25px, 3px, $branding-color);
-            background-color: $secondary-color;
-        }
-    
-        nav > a {
-            font-weight: 500;
-        }
-        nav > a:hover{
-           
-                    cursor: pointer;
-                    color: $branding-color;
-              
-        }
+}
+
+.search {
+    @include flex(row, 56px);
+    @include border(25px, 3px, $branding-color);
+    padding: 4px;
+    align-items: center;
+    min-width: 200px;
+    max-width: 300px;
+    justify-content: space-between;
+    background-color: $secondary-color;
+
+    input {
+        background-color: inherit;
+        border: none;
+        width: 80%;
+    }
+
+    input:focus-visible,
+    input:active {
+        outline: none;
+        color: $branding-color;
+
+    }
+
+    button {
+        background: none;
+        border: none;
+    }
+
+    a {
+        padding-left: $spacing;
+    }
+
+    svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+nav>svg {
+    width: 22px;
+    height: 22px;
+    padding: 4px;
+    cursor: pointer;
+    @include border(25px, 3px, $branding-color);
+    background-color: $secondary-color;
+}
+
+nav>a {
+    font-weight: 500;
+}
+
+nav>a:hover {
+
+    cursor: pointer;
+    color: $branding-color;
+
+}
+      
 </style>

@@ -27,7 +27,7 @@ onMounted(async () => {
         </Cards>
 
     </section>
-    <p v-if ="suger.lenght > 1"> {{ suger }}</p>
+    <p v-if="suger.length > 1" class="suger" > {{ suger }}</p>
     <section>     
         <h2>Tu plataforma para encontrar lo que necesitas <span>al instante.</span></h2>
         <div class="img-api ">
@@ -47,26 +47,28 @@ onMounted(async () => {
     @include flex();
     min-height: 500px; 
 }
-h2 span{
-    color: $branding2-color;
+h2{
+    @include flex;
+    span {
+            color: $branding2-color;
+        }
 }
 .nubes {
     position: absolute;
     top: 300px;
-    left: 200px;
+    left: 15%;
     width: 350px;
-    height: 350px;
-   
+    height: 350px;   
     transform: rotate(-10deg);
-    z-index: -1;
-    
+    z-index: -1;    
 }
 .munich {
     width: 350px;
     height: 350px;
     position: absolute;
     top: 300px;
-    left: 550px;
+    left: 50%;
+    transform:translateX(-50%);
 }
 .arcoiris {
     width: 350px;
@@ -75,15 +77,30 @@ h2 span{
     z-index: -1;
     position: absolute;
     top: 300px;
-    right: 300px;
+    right: 15%;
+}
+.suger{
+    text-align: center;
 }
 .img-api {
     column-count: 4;
     column-gap: 1rem;
-    padding: 7rem;
-    
- 
+    padding: 6rem clamp(0px, 1vw, 7rem);
+   
 }
 
-
+@media (width < 950px){
+    .nubes, .munich, .arcoiris {
+        position: relative;
+        top:inherit;
+        left: inherit;
+        right:inherit;
+        transform: none;
+    }
+        .img-api {
+            column-count: 2;
+            column-gap: 1rem;
+            padding: 6rem clamp(0px, 1vw, 7rem);
+        }
+}
 </style>
